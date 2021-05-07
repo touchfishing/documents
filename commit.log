@@ -1,0 +1,113 @@
+2021-04-30 11:29:55 +0800  Co10: 小更新
+个人中心加入触屏手势操作，但是无动画
+
+2021-04-28 17:26:44 +0800  Co10: 主要是用户页面
+增加了个人中心
+cookie增加了由数组批量删除
+更改链接跳转：个人中心
+个人中心有待完善
+
+2021-04-21 21:27:20 +0800  Co10: 修复了大量问题
+同步后端api
+修复了已知问题
+各页面跳转正常
+
+2021-04-21 20:45:31 +0800  ningzichun: 新增搜索项，更新文档
+
+2021-04-21 20:38:34 +0800  ningzichun: Merge branch 'main' of https://github.com/touchfishing/touchfishing into main
+
+2021-04-21 20:38:29 +0800  ningzichun: 更新文档
+
+2021-04-21 19:18:27 +0800  Co10: Merge branch 'main' of https://github.com/touchfishing/touchfishing into main
+
+2021-04-21 19:18:22 +0800  Co10: 登陆后
+
+2021-04-21 11:54:25 +0800  ningzichun: 微调代码
+跨域访问云云...
+
+2021-04-21 11:17:30 +0800  Co10: 加了乱七八糟的
+不详细描述了
+
+2021-04-20 12:17:04 +0800  Co10: 先push一下
+调了一堆乱七八糟的东西
+没啥突破性的进展
+Login后未写好
+search可搜索数据库了，但是数据库里面没啥东西
+cookie慢慢搞
+
+2021-04-19 21:52:50 +0800  ningzichun: 微调程序
+
+2021-04-16 22:00:18 +0800  ningzichun: 文档 needed
+
+2021-04-16 21:40:49 +0800  ningzichun: 完善订单及搜索功能，编写管理后台
+
+2021-04-15 21:31:18 +0800  ningzichun: 编写商品管理、搜索、订单功能，修改文档
+尚未部署
+
+2021-04-15 17:08:56 +0800  Co10: 搜索页面
+加入地区筛选的操作
+商品列表显示（测试数据）
+
+2021-04-15 11:27:09 +0800  Co10: 测试（忽略本次PUSH）
+我只是想本地读个JSON而已
+
+2021-04-15 10:32:27 +0800  Co10: Merge branch 'main' of https://github.com/touchfishing/touchfishing into main
+
+2021-04-15 10:31:31 +0800  Co10: 更新了搜索框样式
+加入了商品、店铺的选项
+优化了不同分辨率下的布局
+
+2021-04-15 09:46:37 +0800  ningzichun: Merge branch 'main' of https://github.com/touchfishing/touchfishing into main
+
+2021-04-15 09:43:05 +0800  ningzichun: 编写用户订单及店铺管理功能
+
+2021-04-14 22:07:52 +0800  Co10: 轮播器
+修复缩放问题
+
+2021-04-14 19:51:11 +0800  Co10: 修改了部分目录
+调整了部分目录，并命名对应名字文件夹下index.html
+注册增加了验证码的显示
+
+2021-04-14 13:31:09 +0800  Co10: 注册页面基本完成
+删除商家注册入口
+验证码还没搞
+注册成功的页面跳转先放着
+地区选择的代码留给个人信息完善里面弄吧
+
+2021-04-13 20:57:07 +0800  ningzichun: 修改预设头像，修复跨域访问
+
+2021-04-12 23:05:51 +0800  Co10: 注册页面
+买家&商家注册页面
+目前只有买家的注册可以发送请求，商家的还没写
+字段目前只有用户名、邮箱、密码
+头像请忽略，没写好
+其他功能待完善
+------------------
+商家页面有个国内区域选择，用了网上的json
+
+2021-04-12 21:36:17 +0800  ningzichun: 更新文档，测试调整用户管理代码
+
+2021-04-11 17:42:26 +0800  ningzichun: Merge branch 'main' of https://github.com/touchfishing/touchfishing into main
+
+2021-04-12 12:14:09 +0800  mrning: Merge pull request #1 from touchfishing/images
+Add files via upload
+2021-04-11 23:15:21 +0800  mingzizhennanqia: Add files via upload
+
+2021-04-11 23:08:03 +0800  mingzizhennanqia: Add files via upload
+
+2021-04-11 23:06:31 +0800  mingzizhennanqia: Create animate.js
+
+2021-04-11 23:04:42 +0800  mingzizhennanqia: Create index.js
+
+2021-04-11 23:04:05 +0800  mingzizhennanqia: Create index.css
+
+2021-04-11 23:02:55 +0800  mingzizhennanqia: Create index.html
+
+2021-04-11 17:42:14 +0800  ningzichun: 商城模型编写
+
+2021-04-07 19:31:54 +0800  ningzichun: 初始化后端项目，新增用户管理接口
+
+2021-04-07 13:57:33 +0800  Co10: product_search
+商品搜索页面，js暂无，list暂无，配色没弄
+
+2021-03-31 19:25:00 +0800  touchfishing: Initial commit
