@@ -133,8 +133,20 @@ VisualWorks 提出了一种应用模型的结构，一种类似于演示模型�
 > - The presenter coordinates changes in a domain model.
 > - Different variants of MVP handle view updates differently. These vary from using [Observer Synchronization](https://martinfowler.com/eaaDev/MediatedSynchronization.html) to having the presenter doing all the updates with a lot of ground in-between.
 
-### Humble View
+### 简易视图（Humble View）
+
+​		当人们谈论自测试代码时，用户界面很是一个比较突出的问题。许多人发现测试GUI介于艰难和不可能之间。这在很大程度上是因为UI紧密耦合到整个UI环境中，很难将UI分解并进行分段测试。
+
+​		通过创建小部件并在测试代码中进行操作，可以取得不错的结果，但是在某些情况下，这是不可能实现的，可能会错过重要的交互，存在线程问题，测试运行的速度也会变慢。
+
+​		因此，在设计UI的过程中，已经有了一个稳定的过程，使测试时遇到的对象中的行为最小化。迈克尔-弗斯在[The Humble Dialog Box] 将这一概念推广到**简易对象**-任何难以测试的物体都应有最低限度的行为。这样，如果我们不能将它包含在测试套件中，我们就尽量减少未被检测到的失败的可能性。
+
+​		演示者不仅决定如何对用户事件作出反应，而且还处理UI小部件本身中的数据填充。因此，小部件不再具有模型的可见性，也不再需要可见性；它们形成一个[被动视点]被当前用户操纵。另一种方法是使用[表示模型]，尽管在小部件中确实需要更多的行为，但足够让小部件知道如何将自己映射到[表示模型]。这两种方法的关键是，通过测试演示者或测试演示模型，可以测试UI的大部分风险，而不必接触到难以测试的小部件。
 
 > [The Humble Dialog Box](http://www.objectmentor.com/resources/articles/TheHumbleDialogBox.pdf) paper uses a presenter, but in a much deeper way than the original MVP. Not just does the presenter decide how to react to user events, it also handles the population of data in the UI widgets themselves. As a result the widgets no longer have, nor need, visibility to the model; they form a [Passive View](https://martinfowler.com/eaaDev/PassiveScreen.html), manipulated by the presenter.
 >
 > This isn't the only way to make the UI humble. Another approach is to use [Presentation Model](https://martinfowler.com/eaaDev/PresentationModel.html), although then you do need a bit more behavior in the widgets, enough for the widgets to know how to map themselves to the [Presentation Model](https://martinfowler.com/eaaDev/PresentationModel.html).
+
+​		带着表示模型通过让所有的实际决策都由表示模型。所有用户事件和显示逻辑被路由到表示模型，所以小部件所要做的就是将自己映射到表示模型。然后，可以测试表示模型没有任何小部件存在-唯一的风险在于小部件映射。只要这很简单，就能不去测试它。在这种情况下，屏幕并不像被动视点接近，但差别很小。
+
+​		自被动视点使小部件变得比较单一，甚至没有映射，被动视点消除即使是小的风险表示模型。然而，代价是需要在测试运行过程中模拟屏幕--这是需要构建的额外机器。
