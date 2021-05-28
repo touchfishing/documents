@@ -101,23 +101,25 @@ MVC 中最具有影响力的框架，分离演示 (Separated Presentation)，明
 > - Divide GUI widgets into a controller (for reacting to user stimulus) and view (for displaying the state of the model). Controller and view should (mostly) not communicate directly but through the model.
 > - Have views (and controllers) observe the model to allow multiple widgets to update without needed to communicate directly - [Observer Synchronization](https://martinfowler.com/eaaDev/MediatedSynchronization.html).
 
-### 视觉工作应用模型 VisualWorks Application Model
+### 视觉工作的应用模型 VisualWorks Application Model
 
 VisualWorks 提出了一种应用模型的结构，一种类似于演示模型的结构，以此解决 MVC 难以应对视图逻辑和视图状态的难题。
 
-关键点是把属性转变成对象。然后就一直在讲这种映射关系。
+解决问题的关键是把属性转变成对象。对于通常的带有属性的对象，我们可能会认为它有名字和地址等属性。当我们访问该对象的某属性时，如果不使用将属性看作对象的思想，我们需要使用类似obj.property的写法来获得值。若将属性变成对象，那我们可以通过属性返回一个封装实际值的对象，然后通过这个对象获取实际值。这种方法使得部件和模型间的映射变得更为简单。我们只需要告诉部件发送什么样的信息来获取相应属性，部件通过访问获得的对象来获取正确的值。使用应用模型和经典 MVC 的主要区别在于，我们现在在业务对象类和部件之间有一个中间类 : 应用模型类。小部件不会直接访问业务对象。
 
 > ![img](https://martinfowler.com/eaaDev/uiArchs/appModel-cd.gif)
 >
 > <center><i>Figure 9: Class diagram for visual works application model on the running example</i></center>
 
-#### 总结
+应用模型的特点如下：
 
-> - Followed MVC in using [Separated Presentation](https://martinfowler.com/eaaDev/SeparatedPresentation.html) and [Observer Synchronization](https://martinfowler.com/eaaDev/MediatedSynchronization.html).
-> - Introduced an intermediate application model as a home for presentation logic and state - a partial development of [Presentation Model](https://martinfowler.com/eaaDev/PresentationModel.html).
-> - Widgets do not observe domain objects directly, instead they observe the application model.
-> - Made extensive use of Property Objects to help connect the various layers and to support the fine grained synchronization using observers.
-> - It wasn't the default behavior for the application model to manipulate widgets, but it was commonly done for complicated cases.
+和传统MVC一样使用展示分离和观察同步的方法
+
+引入中间应用模型作为展示逻辑和状态的载体（展示模型的缩减版）
+
+部件不直接访问业务对象模型，它们通过应用模型来间接访问。
+
+使用属性对象连接不同层，并使用观察器支持粒度同步
 
 ### 模型视图演示者 Model-View-Presenter (MVP)
 
