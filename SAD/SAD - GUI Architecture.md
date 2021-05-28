@@ -77,7 +77,13 @@
 
 ### 模型视图控制器 Model View Controller (MVC)
 
-开头说了许多自认为是 MVC 但事实上不是的。
+经典MVC模式中，M是指业务模型，V是指用户界面，C则是控制器，使用MVC的目的是将M和V的实现代码分离，从而使同一个程序可以使用不同的表现形式。MVC的核心思想是分离演示。
+
+V即View视图是指用户看到并与之交互的界面。比如由html元素组成的网页界面，或者软件的客户端界面。MVC的好处之一在于它能为应用程序处理很多不同的视图。在视图中其实没有真正的处理发生，它只是作为一种输出数据并允许用户操作的方式。
+
+M即model模型是指模型表示业务规则。在MVC的三个部件中，模型拥有最多的处理任务。被模型返回的数据是中立的，模型与数据格式无关，这样一个模型能为多个视图提供数据，由于应用于模型的代码只需写一次就可以被多个视图重用，所以减少了代码的重复性。
+
+C即controller控制器是指控制器接受用户的输入并调用模型和视图去完成用户的需求，控制器本身不输出任何东西和做任何处理。它只是接收请求并决定调用哪个模型构件去处理请求，然后再确定用哪个视图来显示返回的数据。
 
 #### 分离演示
 
@@ -85,21 +91,30 @@ MVC 中最具有影响力的框架，分离演示 (Separated Presentation)，明
 
 域对象也称之为模型(Model)对象，完全忽视 UI 。
 
-> The presentation part of MVC is made of the two remaining elements: view and controller.
+> MVC的表示部分由  view（视图） 和 controller（控制器） 两个部分组成
 >
 > ![img](https://martinfowler.com/eaaDev/uiArchs/mvc-deps.gif)
 >
-> <center><i>Figure 4: Essential dependencies between model, view, and controller. (I call this essential because in fact the view and controller do link to each other directly, but developers mostly don't use this fact.)</i></center>
+> <center><i>视图和控制器之间的基本依赖关系</i></center>
 
 #### 流同步和观察者同步
 
-> These two styles I describe as patterns: [Flow Synchronization](https://martinfowler.com/eaaDev/FlowSynchronization.html) and [Observer Synchronization](https://martinfowler.com/eaaDev/MediatedSynchronization.html). These two patterns describe alternative ways of handling the triggering of synchronization between screen state and session state. Forms and Controls do it through the flow of the application manipulating the various controls that need to be updated directly. MVC does it by making updates on the model and then relying of the observer relationship to update the views that are observing that model.
+> These two styles I describe as patterns: [Flow Synchronization](https://martinfowler.com/eaaDev/FlowSynchronization.html) and [Observer Synchronization](https://martinfowler.com/eaaDev/MediatedSynchronization.html). 
+>
+> 这两种模式描述了在屏幕状态和会话状态之间进行同步触发的替代方式。表单和控件通过应用程序流来操作需要直接更新的各种控件。MVC通过对模型进行更新，然后依靠观察者关系来更新观察模型的视图。
+>
+> These two patterns describe alternative ways of handlin the triggering of synchronization between screen state and session state. Forms and Controls do it through the flow of the application manipulating the various controls that need to be updated directly. MVC does it by making updates on the model and then relying of the observer relationship to update the views that are observing that model.
 
 #### 总结
 
 > - Make a strong separation between presentation (view & controller) and domain (model) - [Separated Presentation](https://martinfowler.com/eaaDev/SeparatedPresentation.html).
+> - 将视图与控制器和模型分开。
 > - Divide GUI widgets into a controller (for reacting to user stimulus) and view (for displaying the state of the model). Controller and view should (mostly) not communicate directly but through the model.
+> - 将用户图形交互组件拆分成为单一的控制器和视图。其中，控制器和视图只应通过模型来通信。
 > - Have views (and controllers) observe the model to allow multiple widgets to update without needed to communicate directly - [Observer Synchronization](https://martinfowler.com/eaaDev/MediatedSynchronization.html).
+> - 运行视图和控制器观测模型，从而使得组件更新无需直接通信。
+
+
 
 ### 视觉工作的应用模型 VisualWorks Application Model
 
