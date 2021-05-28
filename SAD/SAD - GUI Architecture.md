@@ -121,17 +121,22 @@ VisualWorks 提出了一种应用模型的结构，一种类似于演示模型�
 
 ### 模型视图演示者 Model-View-Presenter (MVP)
 
+MVP是一种架构，最早出现在IBM中，在1990年代的Taligent中更明显。最早通过Potel论文提及，这个想法被Dolphin Smalltalk的开发者进一步推广和描述。正如我们将看到的，这两种描述并不完全是相互联系的，但其基本思想已变得很流行。
+
+在MVP模式中，Model负责实现业务逻辑，保存数据，状态信息，Model仅仅向Presenter提供一组服务接口，隐藏了内部实现的细节；View负责与用户交互，它接收用户的操作、输入信息，与Presenter交互获得数据，展示给用户；Presenter是View和Model的中间层，它接收来自View的输入，并将其传递给Model，然后依据处理结果更新View。下图演示了Model，View，Presenter三者的交互逻辑。
+
+> ![avatar](./MVP.png)
+
 对比 MVP 和 MVC：
 
-> - Forms and Controls: MVP has a model and the presenter is expected to manipulate this model with [Observer Synchronization](https://martinfowler.com/eaaDev/MediatedSynchronization.html) then updating the view. Although direct access to the widgets is allowed, this should be in addition to using the model not the first choice.
-> - MVC: MVP uses a [Supervising Controller](https://martinfowler.com/eaaDev/SupervisingPresenter.html) to manipulate the model. Widgets hand off user gestures to the [Supervising Controller](https://martinfowler.com/eaaDev/SupervisingPresenter.html). Widgets aren't separated into views and controllers. You can think of presenters as being like controllers but without the initial handling of the user gesture. However it's also important to note that presenters are typically at the form level, rather than the widget level - this is perhaps an even bigger difference.
-> - Application Model: Views hand off events to the presenter as they do to the application model. However the view may update itself directly from the domain model, the presenter doesn't act as a [Presentation Model](https://martinfowler.com/eaaDev/PresentationModel.html). Furthermore the presenter is welcome to directly access widgets for behaviors that don't fit into the [Observer Synchronization](https://martinfowler.com/eaaDev/MediatedSynchronization.html).
+> - 两者之间主要的区别是其实现方式和偶尔有些情况下需要同时使用Presenter和Controller。
+> - 在MVP模式中，View和Model之间是松耦合的，Presenter负责将Model绑定到View。通常情况下，View和Presenter是一对一的关系，复杂的View可能有多个Presenter。
+> - 在MPC模式中，Controller是基于操作的，能够在View之间共享。Controller负责决定显示哪个View。
 
 #### 总结
 
-> - User gestures are handed off by the widgets to a [Supervising Controller](https://martinfowler.com/eaaDev/SupervisingPresenter.html).
-> - The presenter coordinates changes in a domain model.
-> - Different variants of MVP handle view updates differently. These vary from using [Observer Synchronization](https://martinfowler.com/eaaDev/MediatedSynchronization.html) to having the presenter doing all the updates with a lot of ground in-between.
+> - 在MVP模式中，接口里声明的事件和控件都是要在Presenter里要处理窗体中的信息。重要的是窗体必须实现IView接口并且必须New一个P，把自身作为参数传到P里，这样在P里就可以利用多态访问窗体的成员了。并且重点是在窗体里我们可以利用委托或其他技术，把对用户输入输出、事件的响应，全部放到P里处理。因为P不知道窗体，只知道IView，所以我们可以建立多个不同的窗体来对应一个P了，只要他们的业务逻辑、事件处理相同即可。
+> - 如果能够很好的利用MVP来编程，则窗体将变得非常简单,甚至可以让毫无经验的编码人员来负责窗体的UI设计等，十分方便。
 
 ### 简易视图（Humble View）
 
